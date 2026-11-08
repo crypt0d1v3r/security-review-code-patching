@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "metadata-grounding-study"
+version = "0.1.0"
+description = "Security Review of patching techniques with biased comments using LLMs."
+requires-python = ">=3.11"
+
+[project.scripts]
+metadata-study = "metadata_study.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["metadata_study*"]
