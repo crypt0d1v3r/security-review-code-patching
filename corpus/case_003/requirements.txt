@@ -1,0 +1,1 @@
+can_access(user, record) returns True only when both belong to the same workspace and user owns record.

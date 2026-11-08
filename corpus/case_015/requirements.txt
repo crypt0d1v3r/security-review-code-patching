@@ -1,0 +1,1 @@
+read_entry(root, name) reads UTF-8 text only from a file inside root; traversal must be rejected.

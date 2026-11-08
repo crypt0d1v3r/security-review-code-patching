@@ -1,0 +1,1 @@
+may_update(principal, document) permits the owner only when principal has a true enabled flag.

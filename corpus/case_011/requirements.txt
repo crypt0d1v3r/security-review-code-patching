@@ -1,0 +1,1 @@
+may_update(user, record) permits the owner only when user has a true current flag.

@@ -1,0 +1,1 @@
+may_update(actor, item) permits the owner only when actor has a true active flag.

@@ -1,0 +1,1 @@
+can_access(actor, item) returns True only when both belong to the same tenant and actor owns item.

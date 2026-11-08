@@ -1,0 +1,1 @@
+can_manage(principal, document) permits an admin only within the same org; all other requests are denied.

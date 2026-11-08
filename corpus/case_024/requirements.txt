@@ -1,0 +1,1 @@
+read_attachment(root, name) reads a UTF-8 .txt file inside root; all other suffixes must be rejected.

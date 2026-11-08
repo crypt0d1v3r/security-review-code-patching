@@ -1,0 +1,1 @@
+may_update(member, entry) permits the owner only when member has a true valid flag.

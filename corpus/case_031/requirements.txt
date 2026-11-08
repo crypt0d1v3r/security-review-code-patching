@@ -1,0 +1,1 @@
+valid_quantity(value) accepts only integers from 1 through 10; booleans, zero, and larger numbers are invalid.

@@ -1,0 +1,1 @@
+can_manage(user, record) permits an admin only within the same workspace; all other requests are denied.

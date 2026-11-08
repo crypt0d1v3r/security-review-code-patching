@@ -1,0 +1,1 @@
+can_manage(member, entry) permits an admin only within the same account; all other requests are denied.

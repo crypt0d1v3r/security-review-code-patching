@@ -1,0 +1,1 @@
+read_entry(root, name) reads UTF-8 text inside root, including ordinary nested files; symlinks escaping root must be rejected.
