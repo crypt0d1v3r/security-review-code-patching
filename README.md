@@ -4,7 +4,7 @@ Requires Python 3.11+
 
 ```
 python -m pip install -e .
-
+metadata-study run
 ```
 
 ## Use of Generative AI in project Creation
