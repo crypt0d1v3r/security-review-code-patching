@@ -7,6 +7,7 @@ name = "metadata-grounding-study"
 version = "0.1.0"
 description = "Security Review of patching techniques with biased comments using LLMs."
 requires-python = ">=3.11"
+dependencies = ["openai", "anthropic", "ollama", "google-genai"]
 
 [project.scripts]
 metadata-study = "metadata_study.cli:main"

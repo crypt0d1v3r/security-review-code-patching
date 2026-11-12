@@ -1,0 +1,16 @@
+{
+	"input_llm": {
+		"provider": "ollama",
+		"model": "llama3"
+	},
+	"output_llm": {
+		"provider": "openai",
+		"model": "gpt-4o"
+	},
+	"supported_providers": [
+		"ollama",
+		"openai",
+		"anthropic",
+		"google"
+	]
+}

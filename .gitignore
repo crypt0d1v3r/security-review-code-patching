@@ -1,1 +1,4 @@
 .DS_Store
+venv/*
+metadata_grounding_study.egg-info/*
+*.pyc
