@@ -2,6 +2,7 @@ import sys, argparse
 from pathlib import Path
 import time
 from .model_api import ModelAPI
+from .corpus import SKEW_VALUES
 
 def build_command_tree() -> argparse.ArgumentParser:
     argparser = argparse.ArgumentParser(prog="metadata-study")
