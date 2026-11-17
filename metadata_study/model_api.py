@@ -50,8 +50,9 @@ class ModelAPI:
         if self.provider == "ollama":
             response = self.client.generate(
                 model=self.model_name,
-                prompt=f"{system_prompt}\n\n{user_prompt}",
-                max_tokens=self.max_tokens,
+                system=system_prompt,
+                prompt=user_prompt,
+                options={"num_predict": self.max_tokens},
             )
-            return response.text
+            return response.response
         raise ValueError("provider must be OpenAI, Anthropic, Google/Gemini, or Ollama")
