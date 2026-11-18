@@ -1,5 +1,5 @@
 from .corpus import Case
-import re, tempfile, shutil, subprocess, sys
+import json, re, tempfile, shutil, subprocess, sys
 from pathlib import Path
 from .model_api import ModelAPI
 from datetime import datetime, timezone
@@ -57,8 +57,8 @@ print({RESULT_WATERMARK!r} + json.dumps({{"tests": status}}))
 def classify_eval_result(test_results: dict, eval_error: str | None) -> str:
     if eval_error:
         return "error"
-    is_secure = test_results.get("test_is_secure") == "pass"
-    is_functional = test_results.get("test_is_functional") == "pass"
+    is_secure = test_results.get("test_security") == "pass"
+    is_functional = test_results.get("test_legitimate") == "pass"
     if is_secure and is_functional:
         return "fixed"
     if is_secure:
@@ -95,22 +95,21 @@ def perform_code_eval(code: str, evaluator_code: Path) -> dict:
     with tempfile.TemporaryDirectory() as tmpdir:
         tmp_path = Path(tmpdir)
         (tmp_path / "module.py").write_text(code)
-        shutil.copy(evaluator_code, tmp_path / "evalulator.py")
+        shutil.copy(evaluator_code, tmp_path / "evaluator.py")
         try:
-            result = subprocess.run(
+            proc = subprocess.run(
                 [sys.executable, "-c", EVAL_CODE],
                 cwd=tmp_path,
                 capture_output=True,
                 text=True,
                 timeout=EVAL_TIMEOUT
             )
-            return parse_eval_output(result.stdout)
         except subprocess.TimeoutExpired:
-            return {"verdict": "error", "explanation": "Evaluation timed out"}
+            return {"tests": {}, "eval_error": f"Evalaution timed out after {EVAL_TIMEOUT}"}
 
     for line in reversed(proc.stdout.splitlines()):
-        if line.startswith(RESULT_MARKER):
-            payload = json.loads(line[len(RESULT_MARKER):])
+        if line.startswith(RESULT_WATERMARK):
+            payload = json.loads(line[len(RESULT_WATERMARK):])
             if "load_error" in payload:
                 return {"tests": {}, "eval_error": payload["load_error"]}
             return {"tests": payload["tests"], "eval_error": None}
